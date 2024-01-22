@@ -1,0 +1,113 @@
+---
+import LinkButton from "./link-button.astro";
+
+interface Tags {
+  name: string;
+  class_tag: string;
+  icon: string;
+}
+interface Props {
+  title: string;
+  description: string;
+  project_image_url: string;
+  github_url?: string;
+  sitio_web: string;
+  tags: Tags[];
+}
+const { title, description, project_image_url, tags, sitio_web, github_url } =
+  Astro.props;
+---
+
+<article>
+  <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
+    {title}
+  </h3>
+  <p class="text-lg mb-4 text-pretty">
+    {description}
+  </p>
+  <ul class="flex gap-x-2 flex-row mb-2">
+    {
+      tags.map(({ name, class_tag, icon }) => (
+        <li>
+          <span
+            class={`flex items-center gap-x-2 rounded-full ${class_tag} py-1 px-2 border border-white/10`}
+          >
+            <img
+              loading="lazy"
+              src={icon}
+              alt={`logo de ${name}`}
+              class="size-4"
+            />
+            <p>{name}</p>
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+  <img
+    loading="lazy"
+    class="rounded shadow-2xl shadow-white/10 aspect-video"
+    src={project_image_url}
+    alt={`Captura de pantalla del proyecto ${project_image_url}`}
+  />
+  <footer class="flex gap-x-4 items-end justify-start mt-4">
+    {
+      github_url && (
+        <LinkButton href={github_url}>
+          <svg
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_7_27)">
+              <path
+                d="M12 0.5C5.37 0.5 0 5.87 0 12.5C0 17.81 3.435 22.295 8.205 23.885C8.805 23.99 9.03 23.63 9.03 23.315C9.03 23.03 9.015 22.085 9.015 21.08C6 21.635 5.22 20.345 4.98 19.67C4.845 19.325 4.26 18.26 3.75 17.975C3.33 17.75 2.73 17.195 3.735 17.18C4.68 17.165 5.355 18.05 5.58 18.41C6.66 20.225 8.385 19.715 9.075 19.4C9.18 18.62 9.495 18.095 9.84 17.795C7.17 17.495 4.38 16.46 4.38 11.87C4.38 10.565 4.845 9.485 5.61 8.645C5.49 8.345 5.07 7.115 5.73 5.465C5.73 5.465 6.735 5.15 9.03 6.695C9.99 6.425 11.01 6.29 12.03 6.29C13.05 6.29 14.07 6.425 15.03 6.695C17.325 5.135 18.33 5.465 18.33 5.465C18.99 7.115 18.57 8.345 18.45 8.645C19.215 9.485 19.68 10.55 19.68 11.87C19.68 16.475 16.875 17.495 14.205 17.795C14.64 18.17 15.015 18.89 15.015 20.015C15.015 21.62 15 22.91 15 23.315C15 23.63 15.225 24.005 15.825 23.885C18.2076 23.0814 20.278 21.5505 21.7446 19.508C23.2112 17.4656 24 15.0145 24 12.5C24 5.87 18.63 0.5 12 0.5Z"
+                fill="#2E2E2E"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_7_27">
+                <rect
+                  width="24"
+                  height="24"
+                  fill="white"
+                  transform="translate(0 0.5)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+          Ver código fuente
+        </LinkButton>
+      )
+    }
+    <LinkButton href={sitio_web}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <>
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M19.5 7a9 9 0 0 0 -7.5 -4a8.991 8.991 0 0 0 -7.484 4"></path>
+          <path d="M11.5 3a16.989 16.989 0 0 0 -1.826 4"></path>
+          <path d="M12.5 3a16.989 16.989 0 0 1 1.828 4"></path>
+          <path d="M19.5 17a9 9 0 0 1 -7.5 4a8.991 8.991 0 0 1 -7.484 -4"
+          ></path>
+          <path d="M11.5 21a16.989 16.989 0 0 1 -1.826 -4"></path>
+          <path d="M12.5 21a16.989 16.989 0 0 0 1.828 -4"></path>
+          <path d="M2 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+          <path d="M17 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+          <path d="M9.5 10l1 4l1.5 -4l1.5 4l1 -4"></path>
+        </>
+      </svg>
+      Ir al sitio web
+    </LinkButton>
+  </footer>
+</article>

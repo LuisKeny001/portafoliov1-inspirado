@@ -1,0 +1,82 @@
+---
+import Proyecto_item from "./items-projects.astro";
+
+import img_app_pomadent from "/public/shot-app-pomadent.png";
+import img_langind_page_pomadent from "/public/shot-pomadent-landingpage.png";
+import css_icon from "/public/icon-css.svg";
+import angular_icon from "/public/icon-angular.svg";
+import astro_icon from "/public/icon-astro.svg";
+import tailwind_icon from "/public/icon-tailwindcss.svg";
+
+const Proyectos = [
+  {
+    title: "App Pomadent - Angular",
+    description:
+      "Enfocado en la gestion y control de los pacientes dentro de la clicnica pomadent, creado con angular y en proceso de desarrollo.",
+    project_image_url: img_app_pomadent.src,
+    sitio_web: "https://app-pomadent.netlify.app",
+    tags: [
+      {
+        name: "Angular",
+        class_tag: "text-white bg-[#480707]",
+        icon: angular_icon.src,
+      },
+      {
+        name: "Css",
+        class_tag: "text-white bg-[#161750]",
+        icon: css_icon.src,
+      },
+    ],
+  },
+  {
+    title: "Landing Page Pomadent - Astro",
+    description:
+      "Seguiendo las intrucciones del dueño de la farmacia pomadent, nos inspiramos en crear un landing page para que la persona pueda ver la informacion de los servicios que puede ofrecer la famaria",
+    project_image_url: img_langind_page_pomadent.src,
+    sitio_web: "https://odontologia-pomadent.netlify.app",
+    github_url: "https://github.com/LuisKeny001/odontologia-PomaDent",
+    tags: [
+      {
+        name: "Astro",
+        class_tag: "text-white bg-[#475569]",
+        icon: astro_icon.src,
+      },
+      {
+        name: "Tailwind",
+        class_tag: "text-white bg-[#0e7490]",
+        icon: tailwind_icon.src,
+      },
+      {
+        name: "Css",
+        class_tag: "text-white bg-[#161750]",
+        icon: css_icon.src,
+      },
+    ],
+  },
+];
+---
+
+<section class="mt-10 grid gap-2">
+  <h1 class="text-3xl text-slate-900 font-bold">Proyectos</h1>
+  {
+    Proyectos.map(
+      ({
+        title,
+        description,
+        project_image_url,
+        sitio_web,
+        tags,
+        github_url,
+      }) => (
+        <Proyecto_item
+          title={title}
+          description={description}
+          project_image_url={project_image_url}
+          sitio_web={sitio_web}
+          tags={tags}
+          github_url={github_url}
+        />
+      )
+    )
+  }
+</section>
