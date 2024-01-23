@@ -1,5 +1,6 @@
 ---
 import LinkButton from "./link-button.astro";
+import Setting_element from "./setting.astro";
 
 interface Tags {
   name: string;
@@ -11,11 +12,19 @@ interface Props {
   description: string;
   project_image_url: string;
   github_url?: string;
+  working?: boolean;
   sitio_web: string;
   tags: Tags[];
 }
-const { title, description, project_image_url, tags, sitio_web, github_url } =
-  Astro.props;
+const {
+  title,
+  description,
+  project_image_url,
+  tags,
+  sitio_web,
+  github_url,
+  working,
+} = Astro.props;
 ---
 
 <article>
@@ -44,12 +53,15 @@ const { title, description, project_image_url, tags, sitio_web, github_url } =
       ))
     }
   </ul>
-  <img
-    loading="lazy"
-    class="rounded shadow-2xl shadow-white/10 aspect-video"
-    src={project_image_url}
-    alt={`Captura de pantalla del proyecto ${project_image_url}`}
-  />
+  <div class="relative">
+    <img
+      loading="lazy"
+      class="rounded shadow-2xl shadow-white/10 aspect-video"
+      src={project_image_url}
+      alt={`Captura de pantalla del proyecto ${project_image_url}`}
+    />
+    {working && <Setting_element />}
+  </div>
   <footer class="flex gap-x-4 items-end justify-start mt-4">
     {
       github_url && (
