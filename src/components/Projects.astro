@@ -3,10 +3,15 @@ import Proyecto_item from "./items-projects.astro";
 
 import img_app_pomadent from "/public/shot-app-pomadent.png";
 import img_langind_page_pomadent from "/public/shot-pomadent-landingpage.png";
+import img_raveV2 from "/public/shot-racev2.png";
+
 import css_icon from "/public/icon-css.svg";
 import angular_icon from "/public/icon-angular.svg";
 import astro_icon from "/public/icon-astro.svg";
 import tailwind_icon from "/public/icon-tailwindcss.svg";
+import html_icon from "/public/icons-html.svg";
+import javascript_icon from "/public/icons-javascript.svg";
+import bootstrap_icon from "/public/icon-bootstrap.svg";
 
 const Proyectos = [
   {
@@ -15,6 +20,8 @@ const Proyectos = [
       "Enfocado en la gestion y control de los pacientes dentro de la clicnica pomadent, creado con angular y en proceso de desarrollo.",
     project_image_url: img_app_pomadent.src,
     sitio_web: "https://app-pomadent.netlify.app",
+    figma_url:
+      "https://www.figma.com/file/nX9642S8FGmscW3jYuSzVL/app-pomadent-HC?type=design&mode=design&t=33oPi71nhE9Pk46J-1",
     working: true,
     tags: [
       {
@@ -36,6 +43,8 @@ const Proyectos = [
     project_image_url: img_langind_page_pomadent.src,
     sitio_web: "https://odontologia-pomadent.netlify.app",
     github_url: "https://github.com/LuisKeny001/odontologia-PomaDent",
+    figma_url:
+      "https://www.figma.com/file/0cjsyilMXZenMwhzjInWN1/landing-page-pomadent?type=design&mode=design&t=33oPi71nhE9Pk46J-1",
     tags: [
       {
         name: "Astro",
@@ -54,6 +63,36 @@ const Proyectos = [
       },
     ],
   },
+  {
+    title: "RACE v2",
+    description:
+      "Maquetado realizo solo con html, css, javascript y git. El objetivo del proyecto era realizar un monolito de una pagina que llevava el gestor de vinculacion con el ambiente y extension universitaria de la UPeU",
+    project_image_url: img_raveV2.src,
+    sitio_web: "https://race-v2.netlify.app/",
+    github_url: "https://github.com/ProyectoIntegrado2023/RACE_v2",
+    tags: [
+      {
+        name: "Html",
+        class_tag: "text-white bg-[#480707]",
+        icon: html_icon.src,
+      },
+      {
+        name: "Css",
+        class_tag: "text-white bg-[#161750]",
+        icon: css_icon.src,
+      },
+      {
+        name: "Javascript",
+        class_tag: "text-white bg-[#a16207]",
+        icon: javascript_icon.src,
+      },
+      {
+        name: "Bootstrap",
+        class_tag: "text-white bg-[#3b0764]",
+        icon: bootstrap_icon.src,
+      },
+    ],
+  },
 ];
 ---
 
@@ -68,6 +107,7 @@ const Proyectos = [
         sitio_web,
         tags,
         github_url,
+        figma_url,
         working,
       }) => (
         <Proyecto_item
@@ -78,6 +118,7 @@ const Proyectos = [
           tags={tags}
           github_url={github_url}
           working={working}
+          figma_url={figma_url}
         />
       )
     )
